@@ -36,27 +36,15 @@ public void homePageTest() throws InterruptedException
 	driver.findElement(By.id("username_password")).sendKeys("pa$$w0rd");
 	driver.findElement(By.id("bigbutton")).click();
 	Assert.assertEquals(driver.getTitle(), "SuiteCRM");
-	WebElement ele=driver.findElement(By.xpath("//*[@id=\'grouptab_0\']"));
-	ele.click();
-	wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(By.xpath("//ul[@class='dropdown-menu']//li//a"))));
+	driver.findElement(By.xpath("//span[@class='notCurrentTab']//a[@id='grouptab_0']")).click();
 	
-     // Step 2: Locate all the list items and store them
-     // Adjust the locator for the options based on your web page
-     List<WebElement> optionsList = driver.findElements(By.xpath("//ul[@class='dropdown-menu']//li//a"));
-
-     // Step 3: Iterate through the options and click the desired one
-     for (WebElement option : optionsList) {
-    	 System.out.println(option.getText());
-         if (option.getText().equals("Accounts")) {
-             option.click();
-             break; // Exit the loop once the correct option is found
-         }
-         
+	driver.findElement(By.xpath("//*[@id=\"moduleTab_9_Accounts\"]")).click();
 	//Select select=new Select(ele);
 	//select.selectByContainsVisibleText("Accounts");
 	//WebElement account=select.getFirstSelectedOption();
 	//account.click();
-	String  name = null;
+         Thread.sleep(3000);
+	String  name ;
 	
 	
     
@@ -64,7 +52,7 @@ public void homePageTest() throws InterruptedException
     System.out.println("odd row cell values: ");
    for(int i=1;i<=9;i+=2)
    {
-    	  name = driver.findElement(By.xpath("//*[@id=\'MassUpdate\']/div[3]/table/tbody/tr[i]/td[3]")).getText();
+    	  name = driver.findElement(By.xpath("//*[@id=\'MassUpdate\']/div[3]/table/tbody/tr"+"["+i+"]"+"/td[3]")).getText();
    System.out.println(name);
         
        //driver.findElement(By.xpath("/html/body/div[4]/div/div[8]/div[2]/b[2]"));
@@ -72,8 +60,7 @@ public void homePageTest() throws InterruptedException
         
     }
      }
-}}
-
+}
     // Print the text in the alert
     
 	
