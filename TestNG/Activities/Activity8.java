@@ -1,1 +1,5 @@
-//it was the testng.xml file .
+package activities;
+
+public class Activity8 {
+
+}
